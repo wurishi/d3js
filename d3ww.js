@@ -1561,6 +1561,7 @@ self.onmessage = ({ data }) => {
         });
         simulation.stop();
         simulation.tick(100);
+        // var tickCount = Math.ceil(Math.log(tmpSim.alphaMin()) / Math.log(1 - tmpSim.alphaDecay()));
         simulation.alpha(0.3).restart();
     } else if (action === 'dragStart') {
         const { index, x, y } = data;
@@ -1590,42 +1591,4 @@ self.onmessage = ({ data }) => {
             node.fy = y;
         }
     }
-    // linkDistance: 200,
-    //   linkStrength: 0.2,
-    //   chargeStrength: -1000
-
-    // var sim = d3.forceSimulation(data.nodes).force('link', d3.forceLink(data.links).id(function (d) {
-    //     return d.id;
-    //   }).distance(function (d) {
-    //     var sourceR = _typeof(d.source) === 'object' ? d.source.r || CONSTANTS.DEFAULT_NODE_RADIUS : 0;
-    //     var targetR = _typeof(d.target) === 'object' ? d.target.r || CONSTANTS.DEFAULT_NODE_RADIUS : 0;
-    //     return Math.max(_this2.option.linkDistance, (sourceR + targetR) * 1.5);
-    //   })
-    //   // .distance(this.option.linkDistance)
-    //   .strength(this.option.linkStrength)).force('charge', d3.forceManyBody().strength(this.option.chargeStrength) // prevent nodes overlapping each other
-    //   //.distanceMax(this.option.chargeDistanceMax), // prevent nodes away too much from each other
-    //   ).force('x', d3.forceX().strength(0.1)).force('y', d3.forceY().strength(0.1)).force('collide', d3.forceCollide().strength(1).radius(function (d) {
-    //     return (d.r || CONSTANTS.DEFAULT_NODE_RADIUS) * 1.1;
-    //   })).alphaMin(0.1);
-
-    // if (!simulation) {
-    //     const nodes = data.nodes.concat();
-    //     const links = data.links.concat();
-    //     simulation = d3Force.forceSimulation(nodes)
-    //         .force('link', d3Force.forceLink(links)
-    //             .distance(100)
-    //         )
-    //         .alphaMin(0.1)
-    //     simulation.on('tick', () => {
-    //         // self.postMessage({ nodes, links })
-    //         console.log(simulation.alpha());
-    //     })
-    //     simulation.on('end', () => {
-    //         console.log('end', simulation.alpha());
-    //     })
-    // }
-
-    // self.postMessage({
-    //     answer: question + ':' + 42,
-    // });
 };
